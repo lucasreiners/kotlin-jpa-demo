@@ -68,4 +68,22 @@ class CacheDemo : TodoEntityTest() {
             it.todoTitle shouldBe "DemoTodo"
         }
     }
+
+    @Test
+    @Transactional
+    @AssertHibernateSQLCount(inserts = 2, selects = 1) // Only 1 select, because the second one is cached (QueryHint)
+    fun `create testdata, then test a custom query with the correct QueryHint annotation regarding the caching`() {
+        val (todo, todoList) = createTestData()
+
+        // Expect a cache MISS here
+
+        todoRepository.findAllByTodoTitle("DemoTodo").size shouldBe 1
+
+        TestTransaction.end()
+        TestTransaction.start()
+
+        // Expect a cache HIT here and therefore no second SELECT
+
+        todoRepository.findAllByTodoTitle("DemoTodo").size shouldBe 1
+    }
 }
