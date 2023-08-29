@@ -1,5 +1,7 @@
 # Kotlin JPA Demo
 
+tl;dr: `./gradlew test`
+
 In our current project we were struggling with the existing Hibernate/JPA setup in combination with Kotlin.
 
 The misconfiguration of the project lead to a massive amount of unnecessary SELECT statements at the database, because
