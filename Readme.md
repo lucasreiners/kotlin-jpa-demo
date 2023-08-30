@@ -17,6 +17,6 @@ If the configuration is correct, even data classes for the entities are working 
   this placeholder will make hibernate perform a select before every insert, to find out if the operation is an insert
   or an update
 - Level2 Cache only works across transactions. A cache hit for an existing entity will only occur, after the entity was
-  put into the cache and another translation tries to access this entity again
+  put into the cache and another transaction tries to access this entity again
 - For a custom repository query to be cached by hibernate, it is not enough to set `use_query_cache: true` in
   application.yaml. The custom query also needs a `@QueryHints` annotation instruction hibernate to cache this query
