@@ -10,6 +10,10 @@ plugins {
 
 // https://spring.io/guides/tutorials/spring-boot-kotlin/ --> Persistence with JPA
 allOpen {
+    // in case you don't use jakarta already 
+    // annotation("javax.persistence.Entity")
+    // annotation("javax.persistence.Embeddable")
+    // annotation("javax.persistence.MappedSuperclass")
     annotation("jakarta.persistence.Entity")
     annotation("jakarta.persistence.Embeddable")
     annotation("jakarta.persistence.MappedSuperclass")
