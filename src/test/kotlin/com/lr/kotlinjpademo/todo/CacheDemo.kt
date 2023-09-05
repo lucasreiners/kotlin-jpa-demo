@@ -35,6 +35,7 @@ class CacheDemo : TodoEntityTest() {
             it.todoTitle shouldBe "DemoTodo"
         }
 
+        // End and start a new transaction, so we work around the hibernate L1 cache
         TestTransaction.end()
         TestTransaction.start()
 
